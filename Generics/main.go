@@ -2,6 +2,7 @@ package main
 
 import "fmt"
 
+// We define an interface to create a constraint in the data types.
 type Number interface {
 	int64 | float64
 }
@@ -54,6 +55,7 @@ func SumFloats(m map[string]float64) float64 {
 	return s
 }
 
+// This is the straightforward non-generic sum.
 func SumIntsOrFloats[K comparable, V int64 | float64](m map[K]V) V {
 	var s V
 	for _, v := range m {
@@ -63,6 +65,7 @@ func SumIntsOrFloats[K comparable, V int64 | float64](m map[K]V) V {
 	return s
 }
 
+// Here we use the interface we have defined before and we don't need to mention any data types.
 func SumNumbers[K comparable, V Number](m map[K]V) V {
 	var s V
 
